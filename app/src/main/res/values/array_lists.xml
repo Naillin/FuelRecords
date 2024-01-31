@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="typesOfGasolineList">
+        <item>АИ-98</item>
+        <item>АИ-95</item>
+        <item>АИ-93</item>
+        <item>АИ-92</item>
+        <item>АИ-91</item>
+        <item>А-80</item>
+        <item>А-72</item>
+        <item>А-76</item>
+        <item>Нормаль-80</item>
+        <item>Regular</item>
+        <item>Premium</item>
+    </string-array>
+</resources>

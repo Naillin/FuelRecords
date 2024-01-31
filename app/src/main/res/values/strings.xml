@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FuelRecords</string>
+
+    <string name="text_date_refil">Дата заправки: </string>
+    <string name="text_type_gas">Вид топлива: </string>
+
+    <string name="textview_date_refil">Дата заправки</string>
+    <string name="textview_liters">Литры</string>
+    <string name="textview_cost">Стоимость</string>
+    <string name="textview_totat_mileage">Общий пробег</string>
+    <string name="textview_mileage">Пробег от последней заправки</string>
+    <string name="textview_description">Описание</string>
+    <string name="button_add">ДОБАВИТЬ</string>
+
+    <string name="textview_input_error">Поле должно быть заполнено</string>
+</resources>
