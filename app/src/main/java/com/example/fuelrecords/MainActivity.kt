@@ -21,21 +21,41 @@ class MainActivity : AppCompatActivity() {
         bindingMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingMainBinding.root)
 
-        bindingMainBinding.apply {
-            recyclerViewMain.layoutManager = LinearLayoutManager(this@MainActivity)
-            recordAdapter = RecordAdapter(root.context)
-            recyclerViewMain.adapter = recordAdapter
-        }
+        initializationrecyclerView()
+        initializationBottomMenu()
+        launchersPack()
+    }
 
-        //возвращение ответа из edit activity
-        editLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if(it.resultCode == RESULT_OK) {
-                recordAdapter.addRecordFuel((it.data?.getParcelableExtra(Constance.CODE_EDIT_LAUNCHER) as? FuelRecord)!!)
+    //СДЕЛАТЬ СОХРАНЕНИЕ В Sharing prefetrresced
+    //И УДАЛЕНИЕ
+
+    private fun initializationrecyclerView() = with(bindingMainBinding) {
+        recyclerViewMain.layoutManager = LinearLayoutManager(this@MainActivity)
+        recordAdapter = RecordAdapter(root.context)
+        recyclerViewMain.adapter = recordAdapter
+    }
+
+    private fun initializationBottomMenu() = with(bindingMainBinding) {
+        bottomNavViewMain.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.itemAdd -> {
+                    editLauncher?.launch(Intent(this@MainActivity, EditActivity::class.java))
+                }
+
+                R.id.itemDelete -> {
+
+                }
             }
+            true
         }
     }
 
-    fun floatingActionButtonAddRecordOnClick(view: View) {
-        editLauncher?.launch(Intent(this@MainActivity, EditActivity::class.java))
+    private fun launchersPack() {
+        //возвращение ответа из edit activity
+        editLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if(it.resultCode == RESULT_OK) {
+                recordAdapter.addRecordFuel(((it.data?.getSerializableExtra(Constance.CODE_EDIT_LAUNCHER) as? FuelRecord)!!))
+            }
+        }
     }
 }

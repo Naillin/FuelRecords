@@ -1,5 +1,6 @@
 package com.example.fuelrecords
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -43,12 +44,25 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         TODO("Not yet implemented")
     }
 
-    fun buttonAddOnClick(view: View) {
+    fun buttonAddOnClick(view: View) = with(bindingEditBinding) {
         val calendarСurrent = Calendar.getInstance(); calendarСurrent.time = Date()
+        val calendarRefeling = Calendar.getInstance(); calendarRefeling.timeInMillis = calendarViewRefuelingDate.date
 
-//        val record: FuelRecord = FuelRecord(
-//            recordDate = calendarСurrent.get(Calendar.DAY_OF_MONTH).toString() + "." + calendarСurrent.get(Calendar.MONTH) + "." + calendarСurrent.get(Calendar.YEAR),
-//            refuelingDate =
-//        )
+        val record: FuelRecord = FuelRecord(
+            recordDate = calendarСurrent,
+            refuelingDate = calendarRefeling,
+            litersOfGasoline = textinputLitersOfGasoline.text.toString().toDoubleOrNull() ?: 0.0,
+            cost = textinputCost.text.toString().toDoubleOrNull() ?: 0.0,
+            typeOfGasoline = spinnerTypeOfGasoline.selectedItemPosition,
+            totalMileage = textinputTotalMileage.text.toString().toDoubleOrNull() ?: 0.0,
+            mileage = textinputMileage.text.toString().toDoubleOrNull() ?: 0.0,
+            description = editTextDescription.text.toString()
+        )
+
+        val editIntent: Intent = Intent().apply {
+            putExtra(Constance.CODE_EDIT_LAUNCHER, record)
+        }
+        setResult(RESULT_OK, editIntent)
+        finish()
     }
 }

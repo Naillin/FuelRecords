@@ -38,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:hint="@string/textview_liters"
-                    android:inputType="text"
+                    android:inputType="number|numberDecimal"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:textSize="12sp" />
@@ -54,6 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:hint="@string/textview_cost"
+                    android:inputType="number|numberDecimal"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:textSize="12sp" />
@@ -75,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:hint="@string/textview_totat_mileage"
+                    android:inputType="number|numberDecimal"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:textSize="12sp" />
@@ -90,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:hint="@string/textview_mileage"
+                    android:inputType="number|numberDecimal"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:textSize="12sp" />

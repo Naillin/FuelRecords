@@ -13,14 +13,14 @@ class RecordAdapter(private val context: Context): RecyclerView.Adapter<RecordAd
     inner class RecordHolder(view: View): RecyclerView.ViewHolder(view) {
         private val binding = RecordItemBinding.bind(view)
         fun bind(record: FuelRecord) = with(binding) {
-            textViewRecordDate.text = record.recordDate.toString() //возможно преобразовать в тип 12 февраля 2023 года
-            val strRefuelingDate = context.resources.getString(R.string.text_date_refil) + record.refuelingDate.toString() //возможно преобразовать в тип 12 февраля 2023 года
+            textViewRecordDate.text = record.recordDate.time.toString() //возможно преобразовать в тип 12 февраля 2023 года
+            val strRefuelingDate = context.resources.getString(R.string.text_date_refil) + record.refuelingDate.time.toString() //возможно преобразовать в тип 12 февраля 2023 года
             textViewRefuelingDate.text = strRefuelingDate
             val strLitersCost = "${record.litersOfGasoline} литра за ${record.cost} рубля"
             textViewLitersCost.text = strLitersCost
             val strTypeGas = context.resources.getString(R.string.text_type_gas) + context.resources.getStringArray(R.array.typesOfGasolineList)[record.typeOfGasoline].toString()
             textViewTypeOfGasoline.text = strTypeGas
-            val strMileage = "Всего пройдено ${record.totalMileage} километров\n${record.mileage} километра последняя заправка"
+            val strMileage = "Всего пройдено ${record.totalMileage} км\nПоследняя заправка ${record.mileage} км назад"
             textViewMileage.text = strMileage
 
             textViewDescription.visibility = if(record.description.isNullOrEmpty()) View.GONE else View.VISIBLE
