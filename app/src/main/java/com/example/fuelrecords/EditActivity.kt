@@ -1,14 +1,12 @@
 package com.example.fuelrecords
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fuelrecords.databinding.ActivityEditBinding
-import com.example.fuelrecords.databinding.ActivityMainBinding
 import java.util.Calendar
 import java.util.Date
 

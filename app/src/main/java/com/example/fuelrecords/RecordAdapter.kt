@@ -51,4 +51,10 @@ class RecordAdapter(private val context: Context): RecyclerView.Adapter<RecordAd
         recordList.add(record)
         notifyDataSetChanged()
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun deleteAllRecordsFuel() {
+        recordList.clear()
+        notifyDataSetChanged()
+    }
 }
