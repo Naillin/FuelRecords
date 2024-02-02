@@ -1,6 +1,7 @@
 package com.example.fuelrecords
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 
@@ -54,5 +55,32 @@ class SharedPrefTools(private val pref: SharedPreferences?) {
         else mutableListOf()
 
         return resultList
+    }
+
+    public fun exportDataString(context: Context): String? {
+        var result: String? = null
+
+        val dataList = takeData()
+        if(dataList.isNotEmpty())
+        {
+            result = ""
+            var litersSum: Double = 0.0
+            var costSum: Double = 0.0
+            var totalMileageSum: Double = 0.0
+            for (item in dataList) {
+                item.apply {
+                    val str = "Дата записи: ${recordDate.time}; Дата заправки: ${refuelingDate.time}; Количество безина: ${litersOfGasoline} л; Стоимость: ${cost} руб; Вид топлива: ${context.resources.getStringArray(R.array.typesOfGasolineList)[typeOfGasoline]}; Всего пройдено ${totalMileage} км; Последняя заправка ${mileage} км назад."
+                    result = result + "\n" + str
+
+                    costSum = costSum + cost
+                    litersSum = litersSum + litersOfGasoline
+                    totalMileageSum = totalMileageSum + totalMileage
+                }
+            }
+            val strMain = "Общая сумма за отчет ${costSum} руб; Общее количество топлива за отчет ${litersSum} л; Общее пройденное расстояние за отчет ${totalMileageSum} км\n\n-------------------------------------------\n\n"
+            result = strMain + result
+        }
+
+        return result
     }
 }

@@ -1,17 +1,21 @@
 package com.example.fuelrecords
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import com.example.fuelrecords.databinding.ActivityEditBinding
 import java.util.Calendar
 import java.util.Date
 
 class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var bindingEditBinding: ActivityEditBinding
+    var prefSpace: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +33,12 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             spinnerTypeOfGasoline.onItemSelectedListener = this@EditActivity
         }
+
+        prefSpace = getSharedPreferences(Constance.NAME_SECTOR_SHARED_PREF_FUELRECORD, Context.MODE_PRIVATE)
+        textinputTotalMileageDoAfterTextChanged()
     }
 
-    var numberTypeGas: Int = 0
+    private var numberTypeGas: Int = 0
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         // Получите выбранный элемент из адаптера Spinner
         //val selectedItem = parent?.getItemAtPosition(position).toString()
@@ -40,6 +47,17 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
+    }
+
+    private fun textinputTotalMileageDoAfterTextChanged() = with(bindingEditBinding) {
+        val lastItem = SharedPrefTools(prefSpace).takeData().lastOrNull()
+        val lastTotalMileage = lastItem?.totalMileage
+
+        textinputTotalMileage.doAfterTextChanged {
+            val difference = Math.round((textinputTotalMileage.text.toString().toDoubleOrNull() ?: 0.0) - (lastTotalMileage ?: 0.0)) / 100.0
+            val strMileage = if(difference > 0.0) difference.toString() else ""
+            textinputMileage.setText(strMileage)
+        }
     }
 
     fun buttonAddOnClick(view: View) = with(bindingEditBinding) {

@@ -14,11 +14,11 @@ class RecordAdapter(private val context: Context): RecyclerView.Adapter<RecordAd
         private val binding = RecordItemBinding.bind(view)
         fun bind(record: FuelRecord) = with(binding) {
             textViewRecordDate.text = record.recordDate.time.toString() //возможно преобразовать в тип 12 февраля 2023 года
-            val strRefuelingDate = context.resources.getString(R.string.text_date_refil) + record.refuelingDate.time.toString() //возможно преобразовать в тип 12 февраля 2023 года
+            val strRefuelingDate = context.resources.getString(R.string.text_date_refil) + " " + record.refuelingDate.time.toString() //возможно преобразовать в тип 12 февраля 2023 года
             textViewRefuelingDate.text = strRefuelingDate
-            val strLitersCost = "${record.litersOfGasoline} литра за ${record.cost} рубля"
+            val strLitersCost = "${record.litersOfGasoline} литра за ${record.cost} руб"
             textViewLitersCost.text = strLitersCost
-            val strTypeGas = context.resources.getString(R.string.text_type_gas) + context.resources.getStringArray(R.array.typesOfGasolineList)[record.typeOfGasoline].toString()
+            val strTypeGas = context.resources.getString(R.string.text_type_gas) + " " + context.resources.getStringArray(R.array.typesOfGasolineList)[record.typeOfGasoline].toString()
             textViewTypeOfGasoline.text = strTypeGas
             val strMileage = "Всего пройдено ${record.totalMileage} км\nПоследняя заправка ${record.mileage} км назад"
             textViewMileage.text = strMileage

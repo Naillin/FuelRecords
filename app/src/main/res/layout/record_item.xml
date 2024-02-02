@@ -38,7 +38,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:text="12.12.2022"
+                    android:text="Fri Feb 02 20:44:00 GMT+05:00 2024"
                     android:textColor="@color/white" />
             </androidx.cardview.widget.CardView>
 
@@ -49,7 +49,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
-                android:text="Дата заправки: 11.12.2022"
+                android:text="Дата заправки: Fri Feb 02 20:44:00 GMT+05:00 2024"
                 android:textColor="@color/white" />
 
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
                 android:text="54 литра за 4000 рубля"
-                android:textColor="@color/white"
+                android:textColor="@android:color/holo_red_dark"
                 android:textStyle="bold" />
 
             <TextView
@@ -72,7 +72,7 @@
                 android:layout_marginEnd="20dp"
                 android:fontFamily="sans-serif"
                 android:text="Вид топлива: АИ-98"
-                android:textColor="@color/white"
+                android:textColor="@color/gold"
                 android:textStyle="bold" />
 
             <TextView
@@ -84,7 +84,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="Всего пройдено 1234 км. 23 км последняя заправка"
-                android:textColor="@color/white"
+                android:textColor="@color/grey"
                 android:textStyle="italic" />
 
             <androidx.cardview.widget.CardView

@@ -11,8 +11,13 @@
         android:title=""
         android:orderInCategory="2" />
     <item
+        android:id="@+id/itemExport"
+        android:icon="@drawable/export_records"
+        android:title=""
+        android:orderInCategory="3" />
+    <item
         android:id="@+id/itemAdd"
         android:icon="@drawable/add_record_on_main"
         android:title=""
-        android:orderInCategory="3" />
+        android:orderInCategory="4" />
 </menu>

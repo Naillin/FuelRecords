@@ -70,6 +70,19 @@ class MainActivity : AppCompatActivity() {
                             })
                     }
                 }
+                R.id.itemExport -> {
+                    val exportString = SharedPrefTools(prefSpace).exportDataString(root.context)
+                    if(!exportString.isNullOrEmpty()) {
+                        val sendIntent: Intent = Intent().apply {
+                            action = Intent.ACTION_SEND
+                            putExtra(Intent.EXTRA_TEXT, exportString)
+                            type = "text/plain"
+                        }
+
+                        val shareIntent = Intent.createChooser(sendIntent, null)
+                        startActivity(shareIntent)
+                    }
+                }
             }
             true
         }
