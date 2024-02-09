@@ -16,7 +16,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:textColorHint="@color/light_gray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textinputLitersOfGasoline"
@@ -24,15 +25,18 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/textview_liters"
                 android:inputType="number|numberDecimal"
-                android:maxLength="25"
+                android:maxLength="10"
                 android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_gray"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:textColorHint="@color/light_gray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textinputCost"
@@ -40,8 +44,10 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/textview_cost"
                 android:inputType="number|numberDecimal"
-                android:maxLength="25"
+                android:maxLength="10"
                 android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_gray"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,23 +60,27 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:textColorHint="@color/light_gray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textinputTotalMileage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/textview_totat_mileage"
+                android:hint="@string/textview_total_mileage"
                 android:inputType="number|numberDecimal"
-                android:maxLength="25"
+                android:maxLength="10"
                 android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_gray"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:textColorHint="@color/light_gray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textinputMileage"
@@ -78,8 +88,10 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/textview_mileage"
                 android:inputType="number|numberDecimal"
-                android:maxLength="25"
+                android:maxLength="10"
                 android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_gray"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,6 +103,8 @@
             android:ems="10"
             android:hint="@string/textview_description"
             android:inputType="text|textMultiLine"
+            android:textColor="@color/white"
+            android:textColorHint="@color/light_gray"
             android:textSize="12sp" />
 
         <Button
@@ -100,8 +114,17 @@
             android:layout_marginTop="15dp"
             android:onClick="buttonAddOnClick"
             android:text="@string/button_add"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:icon="@drawable/add_record" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="buttonCancelOnClick"
+            android:text="@string/button_cancel"
+            android:textSize="14sp"
+            app:icon="@drawable/delete_all_records" />
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -124,6 +147,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:background="@color/lightBlue"
-        android:backgroundTint="@color/lightBlue" />
+        android:backgroundTint="@color/lightBlue"
+        android:unfocusedMonthDateColor="@color/black"
+        android:weekNumberColor="@color/black"
+        android:weekSeparatorLineColor="@color/black" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

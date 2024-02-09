@@ -32,6 +32,10 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             spinnerTypeOfGasoline.adapter = adapter
 
             spinnerTypeOfGasoline.onItemSelectedListener = this@EditActivity
+
+            calendarViewRefuelingDate.setOnDateChangeListener { _, year, month, dayOfMonth ->
+                calendarRefeling.set(year, month, dayOfMonth)
+            }
         }
 
         prefSpace = getSharedPreferences(Constance.NAME_SECTOR_SHARED_PREF_FUELRECORD, Context.MODE_PRIVATE)
@@ -50,7 +54,7 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     private fun textinputTotalMileageDoAfterTextChanged() = with(bindingEditBinding) {
-        val lastItem = SharedPrefTools(prefSpace).takeData().lastOrNull()
+        val lastItem = SharedPrefTools(prefSpace, Constance.NAME_OBJECT_SHARED_PREF_FUELRECORD, "").takeData().lastOrNull()
         val lastTotalMileage = lastItem?.totalMileage
 
         textinputTotalMileage.doAfterTextChanged {
@@ -60,9 +64,10 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
     }
 
+    val calendarRefeling = Calendar.getInstance()
     fun buttonAddOnClick(view: View) = with(bindingEditBinding) {
         val calendarСurrent = Calendar.getInstance(); calendarСurrent.time = Date()
-        val calendarRefeling = Calendar.getInstance(); calendarRefeling.timeInMillis = calendarViewRefuelingDate.date
+        //val calendarRefeling = Calendar.getInstance(); calendarRefeling.timeInMillis = calendarViewRefuelingDate.date //Почему то устанавливается дата сегодня
 
         val record: FuelRecord = FuelRecord(
             recordDate = calendarСurrent,
@@ -79,6 +84,11 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             putExtra(Constance.CODE_EDIT_LAUNCHER, record)
         }
         setResult(RESULT_OK, editIntent)
+        finish()
+    }
+
+    fun buttonCancelOnClick(view: View) {
+        setResult(RESULT_CANCELED)
         finish()
     }
 }

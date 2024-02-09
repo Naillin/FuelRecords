@@ -7,10 +7,13 @@
     <string name="textview_date_refil">Дата заправки</string>
     <string name="textview_liters">Литры</string>
     <string name="textview_cost">Стоимость</string>
-    <string name="textview_totat_mileage">Общий пробег</string>
+    <string name="textview_total_mileage">Общий пробег</string>
     <string name="textview_mileage">Пробег от последней заправки</string>
     <string name="textview_description">Описание</string>
     <string name="button_add">ДОБАВИТЬ</string>
+    <string name="button_cancel">ОТМЕНА</string>
 
     <string name="textview_input_error">Поле должно быть заполнено</string>
+    <string name="dialog_attention">Внимание</string>
+    <string name="dialog_on_delete">Включен режим удаления записей</string>
 </resources>

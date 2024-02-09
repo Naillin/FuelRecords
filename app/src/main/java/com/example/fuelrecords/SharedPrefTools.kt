@@ -5,10 +5,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 
-class SharedPrefTools(private val pref: SharedPreferences?) {
+class SharedPrefTools(private val pref: SharedPreferences?, private val keyStr: String, private val defValueStr: String) {
     @SuppressLint("CommitPrefEdits")
     public fun addData(record: FuelRecord): Boolean {
-        val dataListJson = pref?.getString(Constance.NAME_OBJECT_SHARED_PREF_FUELRECORD, "")
+        val dataListJson = pref?.getString(keyStr, defValueStr)
 
         var result: Boolean = false
         val gson = Gson()
@@ -18,7 +18,7 @@ class SharedPrefTools(private val pref: SharedPreferences?) {
 
             val updatedDataListJson = gson.toJson(dataList)
             val editor = pref?.edit()
-            editor?.putString(Constance.NAME_OBJECT_SHARED_PREF_FUELRECORD, updatedDataListJson)
+            editor?.putString(keyStr, updatedDataListJson)
             editor?.apply()
 
             result = true
@@ -29,7 +29,7 @@ class SharedPrefTools(private val pref: SharedPreferences?) {
 
             val updatedDataListJson = gson.toJson(dataList)
             val editor = pref?.edit()
-            editor?.putString(Constance.NAME_OBJECT_SHARED_PREF_FUELRECORD, updatedDataListJson)
+            editor?.putString(keyStr, updatedDataListJson)
             editor?.apply()
 
             result = true
@@ -38,16 +38,32 @@ class SharedPrefTools(private val pref: SharedPreferences?) {
         return result
     }
 
-    public fun deleteData() {
-
+    public fun deleteAllData() {
+        pref?.edit()?.remove(keyStr)?.apply()
     }
 
-    public fun deleteAllData() {
-        pref?.edit()?.remove(Constance.NAME_OBJECT_SHARED_PREF_FUELRECORD)?.apply()
+    public fun deleteData(index: Int): Boolean {
+        val dataListJson = pref?.getString(keyStr, defValueStr)
+
+        var result: Boolean = false
+        val gson = Gson()
+        if (dataListJson!!.isNotEmpty()) {
+            val dataList = gson.fromJson(dataListJson, Array<FuelRecord>::class.java).toMutableList()
+            dataList.removeAt(index)
+
+            val updatedDataListJson = gson.toJson(dataList)
+            val editor = pref?.edit()
+            editor?.putString(keyStr, updatedDataListJson)
+            editor?.apply()
+
+            result = true
+        }
+
+        return result
     }
 
     public fun takeData(): MutableList<FuelRecord> {
-        val dataListJson = pref?.getString(Constance.NAME_OBJECT_SHARED_PREF_FUELRECORD, "")
+        val dataListJson = pref?.getString(keyStr, defValueStr)
 
         val resultList: MutableList<FuelRecord>
         val gson = Gson()

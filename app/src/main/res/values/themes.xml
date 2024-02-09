@@ -2,8 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.FuelRecords" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/super_grey</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorSecondary">@color/super_grey</item>
+        <item name="android:windowBackground">@color/ultra_grey</item>
+
+        <item name="android:textColorHint">@color/light_gray</item>
+        <item name="hintTextColor">@color/light_gray</item>
+        <item name="color">@color/white</item>
+        <item name="android:buttonTint">@color/super_grey</item>
     </style>
 
-    <style name="Theme.FuelRecords" parent="Base.Theme.FuelRecords" />
+    <style name="Theme.FuelRecords" parent="Base.Theme.FuelRecords">
+        <!-- Если вы хотите создать отдельную тему для вашего приложения, вы можете определить ее здесь -->
+        <!-- Наследуйте от вашей базовой темы и добавьте дополнительные настройки, если необходимо -->
+    </style>
 </resources>
